@@ -1,0 +1,262 @@
+header {
+  background-color: transparent;
+  padding: 0px 20px 20px 0px;
+  text-align: center;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0px;
+  opacity: 0;
+  animation: fade-in 5s forwards;
+}
+
+h1 {
+  margin: 0;
+  color: #8eb378;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 73px;
+  white-space: nowrap;
+}
+
+.left-image,
+.right-image {
+  width: 150px;
+  height: 150px;
+  padding: 100px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 10px;
+}
+
+.button1 {
+  background-color: #8eb378; /*initial background colour*/
+  color: white; /* text colour */
+  cursor: pointer;
+  font-size: 13px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  border-radius: 12px;
+  border: none;
+  padding: 10px;
+  width: 150px;
+  box-shadow: 2px 2px 5px gray;
+}
+
+button {
+  background-color: transparent; /*initial background colour*/
+  color: red; /* text colour */
+  cursor: pointer;
+  font-size: 13px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  border-radius: 12px;
+  border: none;
+  padding: 10px;
+  width: 150px;
+  box-shadow: 2px 2px 5px gray;
+}
+
+button:hover {
+  background-color: orange; /* background colour on hover*/
+}
+
+body {
+  margin: 20px;
+  padding: 20px;
+}
+
+.container1 {
+  display: flex;
+  flex-direction: column;
+  animation: slide-in 5s forwards;
+}
+
+.home {
+  color: #357299;
+  font-size: 36px;
+  font-family: sans-serif;
+  vertical-align: baseline;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inline-paragraph {
+  margin: 0;
+}
+
+.inline-image .inline-image1 .inline-image2 {
+  margin-right: 10px;
+  width: 25px;
+  height: 25px;
+}
+
+.covering {
+  color: #ef680e;
+  font-size: 36px;
+  font-family: sans-serif;
+  text-align: center;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+  gap: 20px;
+}
+
+.services {
+  color: #ed1c24;
+  font-size: 36px;
+  font-family: sans-serif;
+  text-align: right;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 50px;
+}
+
+footer {
+  background-color: transparent;
+  color: grey;
+  text-align: center;
+  padding: 0px;
+  width: 100%;
+  bottom: 0;
+  line-height: 1.3em;
+  font-size: 12px;
+  position: bottom;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  font-family: sans-serif;
+}
+
+.footer-links a {
+  color: #8eb378;
+  text-decoration: none;
+  padding: 5px 10px;
+  /*transition: color 0.3s ease;*/
+}
+
+.footer-links a:hover {
+  color: #8eb378;
+}
+
+.fade-in-heading {
+  opacity: 0;
+  animation: fade-in 2s forwards;
+}
+
+/*fade in heading*/
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* slide in paragraphs*/
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/*Tablet*/
+
+@media (max-width: 900px) {
+  .body {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-image,
+  .right-image {
+    width: 75px;
+    height: 75px;
+    padding: 0;
+  }
+
+  h1 {
+    font-size: 50px;
+    padding: 0;
+  }
+
+  nav ul li {
+    display: flex;
+    /*flex-direction: row;*/
+    padding-left: 210px;
+    gap: 10px;
+  }
+
+  .home,
+  .covering,
+  .services {
+    font-size: 25px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+  }
+}
+
+/*Smartphone*/
+
+@media (max-width: 600px) {
+  .body {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-image,
+  .right-image {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+  }
+
+  h1 {
+    font-size: 20px;
+    padding: 0;
+  }
+
+  nav ul li {
+    display: flex;
+    padding-left: 100px;
+    gap: 10px;
+  }
+
+  .home,
+  .covering,
+  .services {
+    font-size: 15px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+  }
+}
