@@ -8,7 +8,7 @@ Used animations and made the website responsive using @media query
 Assignment 2 task
 
 - Calculator
-Create a simple calculator that prompts the user to select an operation (addition, subtraction, multiplication, division)
+- Create a simple calculator that prompts the user to select an operation (addition, subtraction, multiplication, division)
 - Should ask for 2 numbers
 - perform the calc and display the result
 - after showing result should ask the user if they want to perform another calculation
