@@ -1,4 +1,5 @@
 Just IT Bootcamp
+-----------------------
 Assignment 1 task
 
 To find, inspect and recreate/clone a simple website of our choice
@@ -19,3 +20,13 @@ Assignment 2 task
 - allows user to check balance, deposit, withdraw money
 - ensure withdrawal does not exceed account balance
 - should display updated balance if user wants to perform another transaction
+
+
+Assignment 3
+- Design and execute a simple project using DOM and Event Listeners
+  
+- Created a webpage with colour changing background which changes on the click of a button and displays the name of the background colour on the page, cycles through 3 colours - also added a button to show and hide a picture of a cat because...why not
+  
+- I also created a simple To Do list, some of the code was inspired by research and googling similar pages online and then styled accordingly. The To Do list enables the user to add, complete and delete tasks as you wish
+  
+- I also looked at some other more complex tasks, a pairing card game and a budget calculator, however these were mainly built from code found on line - I found this useful to get the code and then work my way through it to understand the code and enhance my learning and understanding of what we have done this week.  I have not uploaded these to my github
