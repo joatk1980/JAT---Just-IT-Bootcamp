@@ -1,0 +1,89 @@
+body {
+  background-color: pink;
+}
+
+h1 {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 65px;
+  color: darkorchid;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+h2 {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 20px;
+  color: peachpuff;
+  /* Outlines letters in the heading */
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between buttons */
+}
+
+#toggleButton {
+  background-color: yellowgreen;
+  width: 200px; /* Fixed width */
+  height: 100px; /* Fixed height */
+  padding: 10px 20px;
+  margin: 10px 50px;
+  border: none;
+  border-radius: 5px;
+  outline: 2px black;
+  outline-offset: 4px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#catButton {
+  background-color: rgb(199, 76, 127);
+  width: 200px; /* Fixed width */
+  height: 100px; /* Fixed height */
+  padding: 10px 20px;
+  margin: 10px 50px;
+  border: none;
+  border-radius: 5px;
+  outline: 2px black;
+  outline-offset: 4px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+img {
+  width: 750px;
+  height: 500px;
+  display: block;
+}
+
+.color-name {
+  font-size: 24px;
+  color: turquoise;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.text-container {
+  margin-left: 20px;
+}
+
+.styled-text {
+  font-size: 50px;
+  color: grey;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-align: center;
+}

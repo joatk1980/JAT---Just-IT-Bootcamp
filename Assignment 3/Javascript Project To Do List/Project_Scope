@@ -1,0 +1,8 @@
+Add new tasks to a list when user submits a form
+Display the list of tasks on the page 
+Allow the user to mark tasks as complete by toggling a checkbox or button
+Remove tasks from the list when the user clicks the delete button
+
+Select and modify elements on the page using document.querySelector() and related methods
+Creating new HTML elements dynamically using document.createElement()
+Attach event listeners to elements to respond to user interactions

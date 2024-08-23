@@ -1,0 +1,16 @@
+JavaScript Project : Simple Colour Changer
+
+Introduction
+
+Create a JavaScript program that changes the background colour of a web page when the user clicks a button. This project helps learners understand basic DOM manipulation and event handling in JavaScript.
+
+Project Requirements
+Welcome Message: Display a welcome message to the user.
+Colour Button: Provide a button that, when clicked, changes the background colour of the web page.
+Multiple Colours: Cycle through at least three different background colours.
+Current Colour: Display the name of the current background colour on the page.
+Styling: Apply basic styling to the button to make it visually appealing.
+Design Considerations
+Structure your program with clear and organized functions.
+Use JavaScript's DOM manipulation to change the background colour and update the displayed colour name.
+Ensure your code is modular and readable.

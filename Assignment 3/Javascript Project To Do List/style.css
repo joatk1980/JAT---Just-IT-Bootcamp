@@ -1,0 +1,85 @@
+body {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: white;
+  font-size: 20px;
+  background-color: pink;
+  margin: 0;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+h1 {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 40px;
+  color: peachpuff;
+  text-align: center;
+  /* shadow defined by 4 values: hor offset, vert offset, blur radius, color*/
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 15px;
+  border: bold;
+}
+
+input::placeholder {
+  color: grey;
+  font-size: 15px;
+}
+
+button {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 10px;
+  border-radius: 15px;
+  background-color: peachpuff;
+  border: dotted;
+}
+
+.complete-btn {
+  background-color: peachpuff;
+}
+
+.delete-btn {
+  background-color: palegoldenrod;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background: rgb(197, 100, 116);
+  margin: 5px 0;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px dotted black;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: black;
+}
