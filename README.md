@@ -1,12 +1,12 @@
 Just IT Bootcamp
 -----------------------
-Assignment 1 task
+Assignment 1 task - HTML/CSS
 
 To find, inspect and recreate/clone a simple website of our choice
 cloned www.lucyspupsnpaws.co.uk
 Used animations and made the website responsive using @media query
 
-Assignment 2 task
+Assignment 2 task - Javascript
 
 - Calculator
 - Create a simple calculator that prompts the user to select an operation (addition, subtraction, multiplication, division)
@@ -22,7 +22,7 @@ Assignment 2 task
 - should display updated balance if user wants to perform another transaction
 
 
-Assignment 3
+Assignment 3 - Javascript
 - Design and execute a simple project using DOM and Event Listeners
   
 - Created a webpage with colour changing background which changes on the click of a button and displays the name of the background colour on the page, cycles through 3 colours - also added a button to show and hide a picture of a cat because...why not
