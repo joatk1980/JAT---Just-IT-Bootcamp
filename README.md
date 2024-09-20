@@ -30,3 +30,12 @@ Assignment 3
 - I also created a simple To Do list, some of the code was inspired by research and googling similar pages online and then styled accordingly. The To Do list enables the user to add, complete and delete tasks as you wish
   
 - I also looked at some other more complex tasks, a pairing card game and a budget calculator, however these were mainly built from code found on line - I found this useful to get the code and then work my way through it to understand the code and enhance my learning and understanding of what we have done this week.  I have not uploaded these to my github
+
+
+Assignment 4 - mySQL
+- unable to submit as work laptop is restricted so unable to download mySQL to it and do not own personal laptop
+
+
+Assignment 5 - Python
+- Created a quiz using Python covering dictionaries, tuples, for and while loops
+- Error handling considered 
