@@ -1,12 +1,14 @@
 Just IT Bootcamp
 -----------------------
 Assignment 1 task - HTML/CSS
+----------------------------
 
 To find, inspect and recreate/clone a simple website of our choice
 cloned www.lucyspupsnpaws.co.uk
 Used animations and made the website responsive using @media query
 
 Assignment 2 task - Javascript
+------------------------------
 
 - Calculator
 - Create a simple calculator that prompts the user to select an operation (addition, subtraction, multiplication, division)
@@ -23,6 +25,8 @@ Assignment 2 task - Javascript
 
 
 Assignment 3 - Javascript
+-------------------------
+
 - Design and execute a simple project using DOM and Event Listeners
   
 - Created a webpage with colour changing background which changes on the click of a button and displays the name of the background colour on the page, cycles through 3 colours - also added a button to show and hide a picture of a cat because...why not
@@ -33,9 +37,11 @@ Assignment 3 - Javascript
 
 
 Assignment 4 - mySQL
-- unable to submit as work laptop is restricted so unable to download mySQL to it and do not own personal laptop
-
+--------------------
+- Submitted notepad file with all code and output for assignment.  As restricted access on work laptop (and I dont own a personal laptop) used https://www.programiz.com/sql/online-compiler/ as online compiler
+- 
 
 Assignment 5 - Python
+---------------------
 - Created a quiz using Python covering dictionaries, tuples, for and while loops
 - Error handling considered 
