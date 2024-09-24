@@ -1,0 +1,979 @@
+mySQL Assignment
+
+SQL compiler used https://www.programiz.com/sql/online-compiler/
+
+Task 1: Create Tables 
+
+CREATE TABLE Member_Table (
+  		Member_ID INT PRIMARY KEY,
+  		First_Name VARCHAR(20),
+  		Last_Name VARCHAR(20),
+  		Member_Location VARCHAR(20),
+  		Member_Age INT
+  );
+
+ 
+CREATE TABLE Vehicle_Table (
+  		Vehicle_registration VARCHAR(10) PRIMARY KEY,
+  		Vehicle_make VARCHAR(10),
+  		Vehicle_model VARCHAR(10),
+  		Member_ID INT
+  );
+
+ 
+CREATE TABLE Engineer_Table (
+  		Engineer_ID INT PRIMARY KEY,
+        First_Name VARCHAR(20),
+        Last_Name VARCHAR(20)
+  );
+
+
+  CREATE TABLE Breakdown_Table (
+    	Breakdown_ID INT PRIMARY KEY,
+    	Vehicle_registration VARCHAR(10),
+    	Engineer_ID INT,
+    	Breakdown_Date DATE,
+    	Breakdown_time TIME,
+    	Breakdown_location VARCHAR(20)
+    );
+
+
+ALTER TABLE Vehicle_Table
+ADD FOREIGN KEY (Member_ID)
+REFERENCES Member(Member_ID);
+
+
+**Compiler wouldnt take the above so did DROP TABLE command for Vehicle_Table and recreated it adding the Foreign Key
+
+CREATE TABLE Vehicle_Table (
+    Vehicle_Registration VARCHAR(10) PRIMARY KEY,
+    Vehicle_Make VARCHAR(10),
+    Vehicle_Model VARCHAR(10),
+    Member_ID INT,
+    FOREIGN KEY (Member_ID) REFERENCES Member_Table(Member_ID)
+);
+
+
+** Same issue with Breakdown table
+
+CREATE TABLE Breakdown_Table (
+    Breakdown_ID INT PRIMARY KEY,
+    Vehicle_Registration VARCHAR(10),
+    Engineer_ID INT,
+    Breakdown_Date DATE,
+    Breakdown_Time TIME,
+    Breakdown_Location VARCHAR(20),
+    FOREIGN KEY (Engineer_ID) REFERENCES Engineer_Table(Engineer_ID)
+);
+
+
+INSERT INTO Member_Table
+VALUES 
+(1, 'John', 'Doe', 'New York', 32),
+(2, 'Jane', 'Smith', 'Los Angeles', 27),
+(3, 'Mark', 'Jones', 'Chicago', 45),
+(4, 'Emily', 'Davis', 'Houston', 30),
+(5, 'Luke', 'Brown', 'Phoenix', 38),
+(6, 'Sophia', 'White', 'Dallas', 29),
+(7, 'Liam', 'Taylor', 'Miami', 41),
+(8, 'Olivia', 'Green', 'San Diego', 36),
+(9, 'James', 'Harris', 'Denver', 33),
+(10, 'Mia', 'Robinson', 'Atlanta', 25);
+
+INSERT INTO Vehicle_Table
+VALUES
+('ABC1234', 'Toyota', 'Corolla', 1),
+('XYZ5678', 'Ford', 'Mustang', 2),
+('DEF1111', 'Honda', 'Civic', 3),
+('GHI2222', 'Chevy', 'Cruze', 4),
+('JKL3333', 'BMW', 'X5', 5),
+('MNO4444', 'Audi', 'A4', 1),
+('PQR5555', 'Mercedes', 'C300', 2),
+('STU6666', 'Nissan', 'Altima', 3),
+('VWX7777', 'Hyundai', 'Elantra', 6),
+('YZA8888', 'Tesla', 'Model S', 7),
+('BCD9999', 'Kia', 'Sportage', 8),
+('EFG1112', 'Subaru', 'Forester', 9),
+('HIJ1212', 'Jeep', 'Wrangler', 10),
+('KLM1414', 'Mazda', 'CX-5', 4),
+('NOP1515', 'Honda', 'Accord', 5),
+('QRS1616', 'Chevy', 'Malibu', 6),
+('TUV1717', 'Nissan', 'Sentra', 7),
+('WXY1818', 'Ford', 'Explorer', 8),
+('ZAB1919', 'Volvo', 'XC90', 9),
+('CDE2020', 'Lexus', 'RX350', 10);
+
+INSERT INTO Engineer_Table 
+VALUES
+(1, 'Ethan', 'Williams'),
+(2, 'Olivia', 'Miller'),
+(3, 'Sophia', 'Clark'),
+(4, 'Noah', 'Walker');
+
+INSERT INTO Breakdown_Table 
+VALUES
+(1, 'ABC1234', 1, '2024-09-10', '10:30:00', 'New York'),
+(2, 'XYZ5678', 2, '2024-09-10', '11:00:00', 'Los Angeles'),
+(3, 'DEF1111', 3, '2024-09-10', '12:30:00', 'Chicago'),
+(4, 'GHI2222', 4, '2024-09-15', '14:00:00', 'Houston'),
+(5, 'JKL3333', 1, '2024-09-18', '09:45:00', 'Phoenix'),
+(6, 'MNO4444', 2, '2024-09-25', '08:20:00', 'New York'),
+(7, 'PQR5555', 3, '2024-09-28', '11:15:00', 'Los Angeles'),
+(8, 'STU6666', 4, '2024-09-30', '15:30:00', 'Chicago'),
+(9, 'ABC1234', 2, '2024-10-10', '09:30:00', 'New York'),
+(10, 'XYZ5678', 3, '2024-10-15', '13:30:00', 'Los Angeles'),
+(11, 'DEF1111', 4, '2024-10-20', '14:45:00', 'Chicago'),
+(12, 'MNO4444', 1, '2024-10-22', '16:20:00', 'New York'),
+(13, 'JKL3333', 2, '2024-10-25', '17:00:00', 'Phoenix'),
+(14, 'VWX7777', 3, '2024-11-01', '08:00:00', 'Dallas'),
+(15, 'YZA8888', 4, '2024-11-05', '09:00:00', 'Miami'),
+(16, 'BCD9999', 1, '2024-11-10', '10:30:00', 'San Diego'),
+(17, 'EFG1112', 2, '2024-11-15', '14:00:00', 'Denver'),
+(18, 'HIJ1212', 3, '2024-11-18', '11:00:00', 'Atlanta'),
+(19, 'KLM1414', 4, '2024-11-20', '15:45:00', 'Houston'),
+(20, 'NOP1515', 1, '2024-11-25', '16:30:00', 'Phoenix');
+
+
+Task 2 - Perform Queries 
+
+1. 
+SELECT * FROM Member_Table
+LIMIT 5;
+
+Output
+Member_ID	First_Name	Last_Name	Member_Location	Member_Age
+1		John		Doe		New York	32
+2		Jane		Smith		Los Angeles	27
+3		Mark		Jones		Chicago		45
+4		Emily		Davis		Houston		30
+5		Luke		Brown		Phoenix		38
+
+
+2.
+SELECT * FROM Member_Table
+LIMIT 5  OFFSET 5;
+
+Output
+Member_ID	First_Name	Last_Name	Member_Location	Member_Age
+	6	Sophia		White		Dallas		29
+	7	Liam		Taylor		Miami		41
+	8	Olivia		Green		San Diego	36
+	9	James		Harris		Denver		33
+	10	Mia		Robinson	Atlanta		25
+
+3.
+SELECT * FROM Member_Table
+WHERE Member_Age > 30;
+
+Member_ID	First_Name	Last_Name	Member_Location	Member_Age
+1		John		Doe		New York	32
+3		Mark		Jones		Chicago		45
+5		Luke		Brown		Phoenix		38
+7		Liam		Taylor		Miami		41
+8		Olivia		Green		San Diego	36
+9		James		Harris		Denver		33
+
+4.
+SELECT * FROM Member_Table
+WHERE Member_Location IN ('New York', 'Los Angeles');
+
+Output
+Member_ID	First_Name	Last_Name	Member_Location	Member_Age
+1		John		Doe		New York	32
+2		Jane		Smith		Los Angeles	27
+
+5. 
+SELECT * FROM Vehicle_Table
+WHERE Vehicle_make IN ('Toyota', 'Honda');
+
+Output
+Vehicle_registration	Vehicle_make	Vehicle_model	Member_ID
+ABC1234			Toyota		Corolla		1
+DEF1111			Honda		Civic		3
+NOP1515			Honda		Accord		5
+
+6.
+SELECT * FROM Member_Table
+WHERE Member_Age BETWEEN 25 AND 40;
+
+Output
+Member_ID	First_Name	Last_Name	Member_Location	Member_Age
+1		John		Doe		New York	32
+2		Jane		Smith		Los Angeles	27
+4		Emily		Davis		Houston		30
+5		Luke		Brown		Phoenix		38
+6		Sophia		White		Dallas		29
+8		Olivia		Green		San Diego	36
+9		James		Harris		Denver		33
+10		Mia		Robinson	Atlanta		25
+
+
+7.
+SELECT * FROM Vehicle_Table
+WHERE Vehicle_registration LIKE 'A%';
+
+Output
+Vehicle_registration	Vehicle_make	Vehicle_model	Member_ID
+ABC1234			Toyota		Corolla		1
+
+
+8.
+SELECT * FROM Vehicle_Table
+WHERE Vehicle_model LIKE '%5';
+
+Vehicle_registration	Vehicle_make	Vehicle_model	Member_ID
+JKL3333			BMW		X5		5
+KLM1414			Mazda		CX-5		4
+
+
+
+9.
+SELECT * FROM Engineer_Table 
+ORDER BY Last_Name ASC;
+
+Output
+Engineer_ID	First_Name	Last_Name
+3		Sophia		Clark
+2		Olivia		Miller
+4		Noah		Walker
+1		Ethan		Williams
+
+
+10.
+SELECT * FROM Member_Table
+ORDER BY Member_Age DESC;
+
+Member_ID	First_Name	Last_Name	Member_Location	Member_Age
+3		Mark		Jones		Chicago		45
+7		Liam		Taylor		Miami		41
+5		Luke		Brown		Phoenix		38
+8		Olivia		Green		San Diego	36
+9		James		Harris		Denver		33
+1		John		Doe		New York	32
+4		Emily		Davis		Houston		30
+6		Sophia		White		Dallas		29
+2		Jane		Smith		Los Angeles	27
+10		Mia		Robinson	Atlanta		25
+
+
+11.
+SELECT COUNT(*) AS Total_Members
+FROM Member_Table;
+
+Output
+Total_Members
+10
+
+12.
+SELECT * FROM Breakdown_Table
+WHERE Breakdown_Date >= '2024-01-01' AND Breakdown_Date < '2025-01-01';
+
+or
+
+SELECT * FROM Breakdown_Table
+WHERE YEAR(Breakdown_Date) = 2024;
+
+** (Compiler didnt like this and said no such function YEAR)
+
+Breakdown_ID	Vehicle_Registration	Engineer_ID	Breakdown_Date	Breakdown_Time	Breakdown_Location
+1		ABC1234			1		2024-09-10	10:30:00	New York
+2		XYZ5678			2		2024-09-10	11:00:00	Los Angeles
+3		DEF1111			3		2024-09-10	12:30:00	Chicago
+4		GHI2222			4		2024-09-15	14:00:00	Houston
+5		JKL3333			1		2024-09-18	09:45:00	Phoenix
+6		MNO4444			2		2024-09-25	08:20:00	New York
+7		PQR5555			3		2024-09-28	11:15:00	Los Angeles
+8		STU6666			4		2024-09-30	15:30:00	Chicago
+9		ABC1234			2		2024-10-10	09:30:00	New York
+10		XYZ5678			3		2024-10-15	13:30:00	Los Angeles
+11		DEF1111			4		2024-10-20	14:45:00	Chicago
+12		MNO4444			1		2024-10-22	16:20:00	New York
+13		JKL3333			2		2024-10-25	17:00:00	Phoenix
+14		VWX7777			3		2024-11-01	08:00:00	Dallas
+15		YZA8888			4		2024-11-05	09:00:00	Miami
+16		BCD9999			1		2024-11-10	10:30:00	San Diego
+17		EFG1112			2		2024-11-15	14:00:00	Denver
+18		HIJ1212			3		2024-11-18	11:00:00	Atlanta
+19		KLM1414			4		2024-11-20	15:45:00	Houston
+20		NOP1515			1		2024-11-25	16:30:00	Phoenix
+
+
+13.
+SELECT * FROM Breakdown_Table
+WHERE Vehicle_Registration IN ('ABC1234' , 'XYZ5678');
+
+
+Output
+Breakdown_ID	Vehicle_Registration	Engineer_ID	Breakdown_Date	Breakdown_Time	Breakdown_Location
+1		ABC1234			1		2024-09-10	10:30:00	New York
+2		XYZ5678			2		2024-09-10	11:00:00	Los Angeles
+9		ABC1234			2		2024-10-10	09:30:00	New York
+10		XYZ5678			3		2024-10-15	13:30:00	Los Angeles
+
+
+
+14.
+SELECT * FROM Vehicle_Table
+WHERE Vehicle_make = 'Ford';
+
+Vehicle_registration	Vehicle_make	Vehicle_model	Member_ID
+XYZ5678			Ford		Mustang		2
+
+
+15.
+SELECT * FROM Member_Table
+WHERE First_Name LIKE 'J%';
+
+Output
+Member_ID	First_Name	Last_Name	Member_Location	Member_Age
+1		John		Doe		New York	32
+2		Jane		Smith		Los Angeles	27
+9		James		Harris		Denver		33
+
+
+16.
+SELECT * FROM Breakdown_Table
+WHERE Breakdown_Date < '2024-09-01';
+
+Output
+No records
+
+17.
+SELECT * FROM Member_Table
+WHERE Last_Name LIKE '%son';
+
+
+Output
+Member_ID	First_Name	Last_Name	Member_Location	Member_Age
+10		Mia		Robinson	Atlanta		25
+
+
+18.
+SELECT * FROM Breakdown_Table
+WHERE Breakdown_location LIKE '%New%';
+
+Output
+Breakdown_ID	Vehicle_registration	Engineer_ID	Breakdown_Date	Breakdown_time	Breakdown_location
+1		ABC1234			1		2024-09-10	10:30:00	New York
+6		MNO4444			2		2024-09-25	08:20:00	New York
+9		ABC1234			2		2024-10-10	09:30:00	New York
+12		MNO4444			1		2024-10-22	16:20:00	New York
+
+
+
+
+19.
+SELECT * FROM Member_Table
+ORDER BY Member_Age ASC
+LIMIT 1;
+
+Output
+Member_ID	First_Name	Last_Name	Member_Location	Member_Age
+10		Mia		Robinson	Atlanta		25
+
+
+20.
+SELECT * FROM Member_Table
+ORDER BY Member_Age DESC
+LIMIT 1;
+
+Output
+Member_ID	First_Name	Last_Name	Member_Location	Member_Age
+3		Mark		Jones		Chicago		45
+
+
+21.
+SELECT v.*
+FROM Vehicle_Table v
+JOIN Member_Table m ON v.Member_ID = m.Member_ID
+WHERE m.Member_Location = 'Los Angeles';
+
+
+Output
+Vehicle_registration	Vehicle_make	Vehicle_model	Member_ID
+XYZ5678			Ford		Mustang		2
+
+
+22.
+SELECT * from Breakdown_Table
+WHERE Engineer_ID = 1;
+
+
+Output
+Breakdown_ID	Vehicle_registration	Engineer_ID	Breakdown_Date	Breakdown_time	Breakdown_location
+1		ABC1234			1		2024-09-10	10:30:00	New York
+5		JKL3333			1		2024-09-18	09:45:00	Phoenix
+12		MNO4444			1		2024-10-22	16:20:00	New York
+16		BCD9999			1		2024-11-10	10:30:00	San Diego
+20		NOP1515			1		2024-11-25	16:30:00	Phoenix
+
+
+23.
+SELECT * from Member_Table
+WHERE Member_Age < 35;
+
+Output
+Member_ID	First_Name	Last_Name	Member_Location	Member_Age
+1		John		Doe		New York	32
+2		Jane		Smith		Los Angeles	27
+4		Emily		Davis		Houston		30
+6		Sophia		White		Dallas		29
+9		James		Harris		Denver		33
+10		Mia		Robinson	Atlanta		25
+
+
+
+24.
+SELECT * from Member_Table
+WHERE Member_Location IN ('Phoenix', 'Houston');
+
+Output
+Member_ID	First_Name	Last_Name	Member_Location	Member_Age
+4		Emily		Davis		Houston		30
+5		Luke		Brown		Phoenix		38
+
+
+25.
+SELECT * from Vehicle_Table
+WHERE Vehicle_model IN ('Civic', 'Mustang');
+
+Output
+Vehicle_registration	Vehicle_make	Vehicle_model	Member_ID
+XYZ5678			Ford		Mustang		2
+DEF1111			Honda		Civic		3
+
+
+26.
+SELECT * from Member_Table
+WHERE First_Name LIKE '%a%';
+
+Output
+Member_ID	First_Name	Last_Name	Member_Location	Member_Age
+2		Jane		Smith		Los Angeles	27
+3		Mark		Jones		Chicago		45
+6		Sophia		White		Dallas		29
+7		Liam		Taylor		Miami		41
+8		Olivia		Green		San Diego	36
+9		James		Harris		Denver		33
+10		Mia		Robinson	Atlanta		25
+
+
+27.
+SELECT * from Breakdown_Table
+WHERE Breakdown_Date BETWEEN '2024-08-01' AND '2024-08-31';
+
+No Output
+
+
+28.
+SELECT * from Member_Table
+WHERE Member_Age BETWEEN 20 AND 40;
+
+Output
+Member_ID	First_Name	Last_Name	Member_Location	Member_Age
+1		John		Doe		New York	32
+2		Jane		Smith		Los Angeles	27
+4		Emily		Davis		Houston		30
+5		Luke		Brown		Phoenix		38
+6		Sophia		White		Dallas		29
+8		Olivia		Green		San Diego	36
+9		James		Harris		Denver		33
+10		Mia		Robinson	Atlanta		25
+
+
+29.
+SELECT * from Breakdown_Table
+WHERE Breakdown_Date > '2024-10-01';
+
+Output
+Breakdown_ID	Vehicle_registration	Engineer_ID	Breakdown_Date	Breakdown_time	Breakdown_location
+9		ABC1234			2		2024-10-10	09:30:00	New York
+10		XYZ5678			3		2024-10-15	13:30:00	Los Angeles
+11		DEF1111			4		2024-10-20	14:45:00	Chicago
+12		MNO4444			1		2024-10-22	16:20:00	New York
+13		JKL3333			2		2024-10-25	17:00:00	Phoenix
+14		VWX7777			3		2024-11-01	08:00:00	Dallas
+15		YZA8888			4		2024-11-05	09:00:00	Miami
+16		BCD9999			1		2024-11-10	10:30:00	San Diego
+17		EFG1112			2		2024-11-15	14:00:00	Denver
+18		HIJ1212			3		2024-11-18	11:00:00	Atlanta
+19		KLM1414			4		2024-11-20	15:45:00	Houston
+20		NOP1515			1		2024-11-25	16:30:00	Phoenix
+
+
+
+30.
+SELECT * FROM Member_Table
+ORDER BY Member_Age DESC
+LIMIT 3; 
+
+
+Output
+Member_ID	First_Name	Last_Name	Member_Location	Member_Age
+3		Mark		Jones		Chicago		45
+7		Liam		Taylor		Miami		41
+5		Luke		Brown		Phoenix		38
+
+
+Medium Tasks
+1.
+SELECT Vehicle_registration, COUNT(*) AS Total_Breakdowns FROM Breakdown_Table
+GROUP BY Vehicle_Registration;
+
+Output
+Vehicle_registration	Total_Breakdowns
+ABC1234			2
+BCD9999			1
+DEF1111			2
+EFG1112			1
+GHI2222			1
+HIJ1212			1
+JKL3333			2
+KLM1414			1
+MNO4444			2
+NOP1515			1
+PQR5555			1
+STU6666			1
+VWX7777			1
+XYZ5678			2
+YZA8888			1
+
+
+2.
+SELECT m.Member_ID, m.First_Name, m.Last_Name, COUNT(v.Vehicle_Registration) AS Vehicle_Count
+FROM Member_Table m
+JOIN Vehicles v ON m.Member_ID = v.Member_ID
+GROUP BY m.Member_ID
+HAVING COUNT(v.Vehicle_Registration) > 1;
+
+Output
+Member_ID	First_Name	Last_Name	Vehicle_Count
+1		John		Doe		2
+2		Jane		Smith		2
+3		Mark		Jones		2
+4		Emily		Davis		2
+5		Luke		Brown		2
+6		Sophia		White		2
+7		Liam		Taylor		2
+8		Olivia		Green		2
+9		James		Harris		2
+10		Mia		Robinson	2
+
+
+3.
+SELECT e.Engineer_ID, e.First_Name, e.Last_Name, COUNT(e.engineer_id) AS Breakdown_Count
+FROM Engineer_Table e
+JOIN Breakdown_Table b ON e.Engineer_ID = b.Engineer_ID
+GROUP BY b.Engineer_ID
+HAVING COUNT(e.Engineer_ID);
+
+Output
+Engineer_ID	First_Name	Last_Name	Breakdown_Count
+1		Ethan		Williams	5
+2		Olivia		Miller		5
+3		Sophia		Clark		5
+4		Noah		Walker		5
+
+
+4.
+SELECT Breakdown_location, COUNT(*) AS Total_Breakdowns
+FROM Breakdown_Table
+GROUP BY Breakdown_location
+ORDER BY Total_Breakdowns DESC;
+
+
+Output
+Breakdown_location	Total_Breakdowns
+New York		4
+Phoenix			3
+Los Angeles		3
+Chicago			3
+Houston			2
+San Diego		1
+Miami			1
+Denver			1
+Dallas			1
+Atlanta			1
+
+
+5.
+SELECT m.first_name, m.last_name, m.member_age, v.vehicle_make, v.vehicle_model FROM Vehicle_Table v
+JOIN Member_Table m ON v.Member_ID = m.Member_ID
+WHERE m.Member_Age < 30;
+
+Output
+First_Name	Last_Name	Member_Age	Vehicle_make	Vehicle_model
+Jane		Smith		27		Ford		Mustang
+Jane		Smith		27		Mercedes	C300
+Sophia		White		29		Hyundai		Elantra
+Mia		Robinson	25		Jeep		Wrangler
+Sophia		White		29		Chevy		Malibu
+Mia		Robinson	25		Lexus		RX350
+
+
+6.
+SELECT * FROM Breakdown_Table
+ORDER BY Breakdown_Time DESC ;
+
+Output
+Breakdown_ID	Vehicle_registration	Engineer_ID	Breakdown_Date	Breakdown_time	Breakdown_location
+13		JKL3333			2		2024-10-25	17:00:00	Phoenix
+20		NOP1515			1		2024-11-25	16:30:00	Phoenix
+12		MNO4444			1		2024-10-22	16:20:00	New York
+19		KLM1414			4		2024-11-20	15:45:00	Houston
+8		STU6666			4		2024-09-30	15:30:00	Chicago
+11		DEF1111			4		2024-10-20	14:45:00	Chicago
+4		GHI2222			4		2024-09-15	14:00:00	Houston
+17		EFG1112			2		2024-11-15	14:00:00	Denver
+10		XYZ5678			3		2024-10-15	13:30:00	Los Angeles
+3		DEF1111			3		2024-09-10	12:30:00	Chicago
+7		PQR5555			3		2024-09-28	11:15:00	Los Angeles
+2		XYZ5678			2		2024-09-10	11:00:00	Los Angeles
+18		HIJ1212			3		2024-11-18	11:00:00	Atlanta
+1		ABC1234			1		2024-09-10	10:30:00	New York
+16		BCD9999			1		2024-11-10	10:30:00	San Diego
+5		JKL3333			1		2024-09-18	09:45:00	Phoenix
+9		ABC1234			2		2024-10-10	09:30:00	New York
+15		YZA8888			4		2024-11-05	09:00:00	Miami
+6		MNO4444			2		2024-09-25	08:20:00	New York
+14		VWX7777			3		2024-11-01	08:00:00	Dallas
+
+
+7.
+SELECT * FROM Breakdown_Table
+WHERE Breakdown_location = 'New York' ;
+
+Output
+Breakdown_ID	Vehicle_registration	Engineer_ID	Breakdown_Date	Breakdown_time	Breakdown_location
+1		ABC1234			1		2024-09-10	10:30:00	New York
+6		MNO4444			2		2024-09-25	08:20:00	New York
+9		ABC1234			2		2024-10-10	09:30:00	New York
+12		MNO4444			1		s2024-10-22	16:20:00	New York
+
+
+8.
+SELECT m.* from Member_Table m
+JOIN Vehicle_Table v ON m.Member_ID = v.Member_ID
+WHERE v.Vehicle_Registration IS NULL;
+
+No Output - All members own a car 
+
+
+9.
+SELECT DISTINCT b.vehicle_registration, b.Breakdown_Location, m.Member_Location
+FROM Breakdown_Table b
+JOIN Vehicle_Table v ON b.Vehicle_Registration = v.Vehicle_Registration
+JOIN Member_Table m ON v.Member_ID = m.Member_ID
+WHERE b.Breakdown_Location = m.Member_Location;
+
+Output
+Vehicle_registration	Breakdown_location	Member_Location
+ABC1234			New York		New York
+XYZ5678			Los Angeles		Los Angeles
+DEF1111			Chicago			Chicago
+GHI2222			Houston			Houston
+JKL3333			Phoenix			Phoenix
+MNO4444			New York		New York
+PQR5555			Los Angeles		Los Angeles
+STU6666			Chicago			Chicago
+VWX7777			Dallas			Dallas
+YZA8888			Miami			Miami
+BCD9999			San Diego		San Diego
+EFG1112			Denver			Denver
+HIJ1212			Atlanta			Atlanta
+KLM1414			Houston			Houston
+NOP1515			Phoenix			Phoenix
+
+
+Difficult Tasks
+1.
+SELECT m.Member_ID, m.First_Name, m.Last_Name, v.Vehicle_Registration, v.Vehicle_Make, v.Vehicle_Model
+FROM Member_Table m
+JOIN Vehicle_Table v ON m.Member_ID = v.Member_ID
+ORDER BY m.Member_id;
+
+Output
+Member_ID	First_Name	Last_Name	Vehicle_registration	Vehicle_make	Vehicle_model
+1		John		Doe		ABC1234			Toyota	Corolla
+1		John		Doe		MNO4444			Audi	A4
+2		Jane		Smith		XYZ5678			Ford	Mustang
+2		Jane		Smith		PQR5555			Mercedes	C300
+3		Mark		Jones		DEF1111			Honda	Civic
+3		Mark		Jones		STU6666			Nissan	Altima
+4		Emily		Davis		GHI2222			Chevy	Cruze
+4		Emily		Davis		KLM1414			Mazda	CX-5
+5		Luke		Brown		JKL3333			BMW	X5
+5		Luke		Brown		NOP1515			Honda	Accord
+6		Sophia		White		VWX7777			Hyundai	Elantra
+6		Sophia		White		QRS1616			Chevy	Malibu
+7		Liam		Taylor		YZA8888			Tesla	Model S
+7		Liam		Taylor		TUV1717			Nissan	Sentra
+8		Olivia		Green		BCD9999			Kia	Sportage
+8		Olivia		Green		WXY1818			Ford	Explorer
+9		James		Harris		EFG1112			Subaru	Forester
+9		James		Harris		ZAB1919			Volvo	XC90
+10		Mia		Robinson	HIJ1212			Jeep	Wrangler
+10		Mia		Robinson	CDE2020			Lexus	RX350
+
+
+2.
+SELECT b.Breakdown_ID, b.Vehicle_Registration, b.Breakdown_Date, b.Breakdown_Time, b.Breakdown_Location,
+       m.Member_ID, m.First_Name, m.Last_Name
+FROM Breakdown_Table b
+JOIN Vehicle_Table v ON b.Vehicle_Registration = v.Vehicle_Registration
+JOIN Member_Table m ON v.Member_ID = m.Member_ID;
+
+Output
+Breakdown_ID	Vehicle_registration	Breakdown_Date	Breakdown_time	Breakdown_location	Member_ID	First_Name	Last_Name
+1		ABC1234			2024-09-10	10:30:00	New York		1		John		Doe
+2		XYZ5678			2024-09-10	11:00:00	Los Angeles		2		Jane		Smith
+3		DEF1111			2024-09-10	12:30:00	Chicago			3		Mark		Jones
+4		GHI2222			2024-09-15	14:00:00	Houston			4		Emily		Davis
+5		JKL3333			2024-09-18	09:45:00	Phoenix			5		Luke		Brown
+6		MNO4444			2024-09-25	08:20:00	New York		1		John		Doe
+7		PQR5555			2024-09-28	11:15:00	Los Angeles		2		Jane		Smith
+8		STU6666			2024-09-30	15:30:00	Chicago			3		Mark		Jones
+9		ABC1234			2024-10-10	09:30:00	New York		1		John		Doe
+10		XYZ5678			2024-10-15	13:30:00	Los Angeles		2		Jane		Smith
+11		DEF1111			2024-10-20	14:45:00	Chicago			3		Mark		Jones
+12		MNO4444			2024-10-22	16:20:00	New York		1		John		Doe
+13		JKL3333			2024-10-25	17:00:00	Phoenix			5		Luke		Brown
+14		VWX7777			2024-11-01	08:00:00	Dallas			6		Sophia		White
+15		YZA8888			2024-11-05	09:00:00	Miami			7		Liam		Taylor
+16		BCD9999			2024-11-10	10:30:00	San Diego		8		Olivia		Green
+17		EFG1112			2024-11-15	14:00:00	Denver			9		James		Harris
+18		HIJ1212			2024-11-18	11:00:00	Atlanta			10		Mia		Robinson
+19		KLM1414			2024-11-20	15:45:00	Houston			4		Emily		Davis
+20		NOP1515			2024-11-25	16:30:00	Phoenix			5		Luke		Brown
+
+
+3.
+SELECT m.*
+FROM Member_Table m
+JOIN Vehicle_Table v ON m.Member_ID = v.Member_ID
+LEFT JOIN Breakdown_Table b ON v.Vehicle_Registration = b.Vehicle_Registration
+WHERE b.Breakdown_ID IS NULL;
+
+Output
+Member_ID	First_Name	Last_Name	Member_Location	Member_Age
+6		Sophia		White		Dallas		29
+7		Liam		Taylor		Miami		41
+8		Olivia		Green		San Diego	36
+9		James		Harris		Denver		33
+10		Mia		Robinson	Atlanta		25
+
+
+4.
+SELECT v.Vehicle_Registration, v.Vehicle_Make, v.Vehicle_Model, COUNT(b.Breakdown_ID) AS Breakdown_Count
+FROM Vehicle_Table v
+LEFT JOIN Breakdown_Table b ON v.Vehicle_Registration = b.Vehicle_Registration
+GROUP BY v.Vehicle_Registration, v.Vehicle_Make, v.Vehicle_Model;
+
+Output
+Vehicle_registration	Vehicle_make	Vehicle_model	Breakdown_Count
+ABC1234			Toyota		Corolla		2
+BCD9999			Kia		Sportage	1
+CDE2020			Lexus		RX350		0
+DEF1111			Honda		Civic		2
+EFG1112			Subaru		Forester	1
+GHI2222			Chevy		Cruze		1
+HIJ1212			Jeep		Wrangler	1
+JKL3333			BMW		X5		2
+KLM1414			Mazda		CX-5		1
+MNO4444			Audi		A4		2
+NOP1515			Honda		Accord		1
+PQR5555			Mercedes	C300		1
+QRS1616			Chevy		Malibu		0
+STU6666			Nissan		Altima		1
+TUV1717			Nissan		Sentra		0
+VWX7777			Hyundai		Elantra		1
+WXY1818			Ford		Explorer	0
+XYZ5678			Ford		Mustang		2
+YZA8888			Tesla		Model S		1
+ZAB1919			Volvo		XC90		0
+
+
+5.
+SELECT m.Member_ID, m.First_Name, m.Last_Name, COUNT(b.Breakdown_ID) AS Breakdown_Count
+FROM Member_Table m
+JOIN Vehicle_Table v ON m.Member_ID = v.Member_ID
+JOIN Breakdown_Table b ON v.Vehicle_Registration = b.Vehicle_Registration
+GROUP BY m.Member_ID, m.First_Name, m.Last_Name
+HAVING COUNT(b.Breakdown_ID) > 2;
+
+
+Output
+Member_ID	First_Name	Last_Name	Breakdown_Count
+1		John		Doe		4
+2		Jane		Smith		3
+3		Mark		Jones		3
+5		Luke		Brown		3
+
+
+6.
+SELECT b.Breakdown_Date, COUNT(DISTINCT b.Vehicle_Registration) AS Vehicle_Count
+FROM Breakdown_Table b
+GROUP BY b.Breakdown_Date
+HAVING COUNT(DISTINCT b.Vehicle_Registration) > 1;
+
+Breakdown_Date	Vehicle_Count
+2024-09-10	3
+
+
+7.
+SELECT 
+    e.Engineer_ID,
+    e.First_Name,
+    e.Last_Name,
+    COUNT(b.Breakdown_ID) AS Breakdown_Count,
+    CASE 
+        WHEN COUNT(b.Breakdown_ID) > 5 THEN 'Expert'
+        ELSE 'Beginner'
+    END AS Engineer_Level
+FROM Engineer_Table e
+LEFT JOIN Breakdown_Table b ON e.Engineer_ID = b.Engineer_ID
+GROUP BY e.Engineer_ID, e.First_Name, e.Last_Name;
+
+Output
+Engineer_ID	First_Name	Last_Name	Breakdown_Count	Engineer_Level
+1		Ethan		Williams	5		Beginner
+2		Olivia		Miller		5		Beginner
+3		Sophia		Clark		5		Beginner
+4		Noah		Walker		5		Beginner
+
+
+
+8.
+SELECT v.Vehicle_Registration, v.Vehicle_Make, v.Vehicle_Model
+FROM Vehicle_Table v
+WHERE v.Vehicle_Registration NOT IN (
+    SELECT b.Vehicle_Registration
+    FROM Breakdown_Table b
+);
+
+
+Output
+Vehicle_registration	Vehicle_make	Vehicle_model
+QRS1616			Chevy		Malibu
+TUV1717			Nissan		Sentra
+WXY1818			Ford		Explorer
+ZAB1919			Volvo		XC90
+CDE2020			Lexus		RX350
+
+
+9.
+SELECT AVG(m.Member_Age) AS Av_Age
+FROM Member_Table m
+JOIN Vehicle_Table v on m.Member_ID = v.Member_ID
+JOIN Breakdown_Table b ON v.Vehicle_Registration = b.Vehicle_Registration
+WHERE b.Breakdown_ID IS NOT NULL;
+
+Output
+Av_Age
+34.1
+
+
+10.
+SELECT v.Vehicle_Registration, COUNT(b.breakdown_ID) AS Breakdown_Count
+FROM Breakdown_Table b
+JOIN Vehicle_Table v ON b.Vehicle_Registration = v.Vehicle_Registration
+GROUP BY v.Vehicle_Registration
+ORDER BY Breakdown_Count DESC
+LIMIT 3;
+
+Vehicle_registration	Breakdown_Count
+XYZ5678			2
+MNO4444			2
+JKL3333			2
+
+
+Task 5: Research SQL Functions
+Research the following SQL functions: AVG, MAX, MIN, and SUM. Explain with examples how each is used.
+
+AVG() - function returns the average value of a numeric column
+i.e.
+SELECT AVG(Member_Age) AS Avg_Age
+FROM Member_Table;
+
+Output
+Avg_Age
+33.6
+
+MAX() - function returns the largest value of selected column
+i.e.
+SELECT MAX(Member_Age) as Maximum_age
+FROM Member_Table;
+
+Output
+Maximum_age
+45
+
+
+MIN() - function returns the smalles value of a selected column
+i.e.
+SELECT MIN(Member_Age) as Minimum_age
+FROM Member_Table;
+
+Output
+Minimum_age
+25
+
+
+SUM() - function returns the total sum of a numeric column
+i.e.
+SELECT SUM(Member_Age) AS Total_Age
+FROM Member_Table;
+
+Output
+Total_Age
+336
+
+
+Task 6: Update and Delete Records
+1. Update 3 records of your own choice from the Engineer table.
+
+UPDATE Engineer_Table
+SET First_Name = 'Ethan', Last_Name = 'Johnson'
+WHERE Engineer_ID = 1;
+
+UPDATE Engineer_Table
+SET First_Name = 'Olivia', Last_Name = 'Smith'
+WHERE Engineer_ID = 2;
+
+UPDATE Engineer_Table
+SET First_Name = 'Sophia', Last_Name = 'Williams'
+WHERE Engineer_ID = 3;
+
+Output
+Engineer_ID	First_Name	Last_Name
+1		Ethan		Johnson
+2		Olivia		Smith
+3		Sophia		Williams
+4		Noah		Walker
+
+
+2. Delete 2 records of your own choice from the breakdown table
+DELETE FROM Breakdown_Table
+WHERE Breakdown_ID IN (1, 2);
+
+Breakdown_ID	Vehicle_registration	Engineer_ID	Breakdown_Date	Breakdown_time	Breakdown_location
+3		DEF1111			3		2024-09-10	12:30:00	Chicago
+4		GHI2222			4		2024-09-15	14:00:00	Houston
+5		JKL3333			1		2024-09-18	09:45:00	Phoenix
+6		MNO4444			2		2024-09-25	08:20:00	New York
+7		PQR5555			3		2024-09-28	11:15:00	Los Angeles
+8		STU6666			4		2024-09-30	15:30:00	Chicago
+9		ABC1234			2		2024-10-10	09:30:00	New York
+10		XYZ5678			3		2024-10-15	13:30:00	Los Angeles
+11		DEF1111			4		2024-10-20	14:45:00	Chicago
+12		MNO4444			1		2024-10-22	16:20:00	New York
+13		JKL3333			2		2024-10-25	17:00:00	Phoenix
+14		VWX7777			3		2024-11-01	08:00:00	Dallas
+15		YZA8888			4		2024-11-05	09:00:00	Miami
+16		BCD9999			1		2024-11-10	10:30:00	San Diego
+17		EFG1112			2		2024-11-15	14:00:00	Denver
+18		HIJ1212			3		2024-11-18	11:00:00	Atlanta
+19		KLM1414			4		2024-11-20	15:45:00	Houston
+20		NOP1515			1		2024-11-25	16:30:00	Phoenix
+
+
