@@ -44,4 +44,10 @@ Assignment 4 - mySQL
 Assignment 5 - Python
 ---------------------
 - Created a quiz using Python covering dictionaries, tuples, for and while loops
-- Error handling considered 
+- Error handling considered
+
+
+**Python playlist project**
+-----------------------------
+- Add, edit, update, view music playlist
+- Error handling for if song is not on the playlist 
